@@ -52,6 +52,10 @@ class Film
     return Customer.map_items(customers)
   end
 
+  def number_of_customers_going_to_film
+    return customer_by_film.length
+  end
+
 
 
 end

@@ -48,5 +48,15 @@ ticket08.save()
 ticket09.save()
 ticket10.save()
 
+customer1.spend_funds
+customer2.spend_funds
+customer3.spend_funds
+
+
+customer3.name = "Budgie"
+customer1.update
+customer2.update
+customer3.update
+
 binding.pry
 nil

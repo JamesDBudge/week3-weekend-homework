@@ -53,7 +53,25 @@ class Customer
     return Film.map_items(films)
   end
 
-  def purchase_viewing()
+  def list_of_viewings
+    sql = "SELECT tickets.*, films.* FROM tickets
+    INNER JOIN films
+    ON tickets.film_id = films.id
+    WHERE customer_id = $1"
+    values = [@id]
+    films = SqlRunner.run(sql, values)
+    return Film.map_items(films)
+  end
+
+  def spend_funds
+    films = self.list_of_viewings
+    ticket_costs = films.map { |ticket| ticket.price.to_i }
+    total_cost = ticket_costs.sum
+    @funds -= total_cost
+  end
+
+  def number_of_tickets
+    return self.list_of_viewings.length
 
   end
 
